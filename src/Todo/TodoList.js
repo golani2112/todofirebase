@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -14,18 +14,10 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { connect } from 'react-redux'
 import * as actionTypes from '../store/actions';
 
-import { Link,useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //to get from ls
-const getLocal=()=>{
-    let list=localStorage.getItem('lists');
-    if(list){
-      return JSON.parse(localStorage.getItem('lists'));
-    }
-    else{
-      return [];
-    }
-  }
+
 
 const useStyles = makeStyles({
     container: {
@@ -59,7 +51,7 @@ function TodoList({ todoList, setTitle, setItem, setEdit, deleteItem }) {
                 <Typography variant="h6" color="error">Zero Tasks</Typography>
                 :
                 (<List>
-                    {   todoList.map(item => {
+                    {todoList.map(item => {
                         
                         return (
                             <>

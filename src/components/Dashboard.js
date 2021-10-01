@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import {  Button } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
-import ReactDOM from "react-dom"
+import {  useHistory } from "react-router-dom"
+
 import Todo from "../Todo"
 import { Provider } from "react-redux"
 import reducer from '../store/reducers/index'
@@ -20,7 +20,7 @@ import { createStore } from "redux";
 // }
 export default function Dashboard() {
   const [error, setError] = useState("")
-  const { currentUser, logout } = useAuth()
+  const {  logout } = useAuth()
   const history = useHistory()
 
   async function handleLogout() {
@@ -31,6 +31,7 @@ export default function Dashboard() {
       history.push("/login")
     } catch {
       setError("Failed to log out")
+      console.log(error);
     }
   }
 
